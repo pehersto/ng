@@ -1,6 +1,6 @@
-# Neural Galerkin with Active Learning
+# Neural Galerkin with Active Learning for High-Dimensional Evolution Equations
 
-This code implements the Neural Galerkin scheme with Active Learning for high-dimensional evolution methods as described in:
+This code implements the Neural Galerkin scheme with Active Learning for high-dimensional evolution equations as described in:
 
 * Bruna, Peherstorfer, Vanden-Eijnden [Neural Galerkin Scheme with Active Learning for High-Dimensional Evolution Equations](tbd).
 

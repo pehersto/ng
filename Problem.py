@@ -15,8 +15,6 @@ from misc import pyngtools
 
 from datetime import datetime
 
-# DEBUG
-import matplotlib.pyplot as plt
 
 class Problem:
     def __init__(self, probName, sampleName, N, nrLayers, deltat = -1):
@@ -212,17 +210,6 @@ def sampleGaussUnitRBFHelper(Nx, key, Z, factorSigma = 2.0):
     NStep = int(math.ceil(Nx/N)) # sample from each Gaussian Nx/N points
     key, subkey = jax.random.split(key)
     xSamples = (Z[:, 1:].reshape((N, 1, d)) + jnp.multiply(factorSigma/jnp.abs(Z[:, 0]).reshape((N, 1, 1)), jax.random.normal(subkey, shape = (N, NStep, d)))).reshape((N*NStep, d))
-
-    # plt.ion()
-    # plt.show()
-    # fig, ax = plt.subplots()
-    # ax.plot(jnp.linspace(Omega[0], Omega[1], Nx), evale + jnp.dot(jnp.ones(evale.shape), jnp.diag(jnp.linspace(1, N, N))), '-')
-    # ax.plot(xSamples, jnp.dot(jnp.ones((NStep, N)), jnp.diag(jnp.linspace(1, N, N))), '-k')
-    #
-    # plt.draw()
-    # plt.pause(0.001)
-    # # plt.show()
-    # input('..')
 
     xSamples = xSamples[:Nx, :]
     return xSamples, key

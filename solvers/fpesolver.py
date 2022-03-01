@@ -21,9 +21,6 @@ def fpesolverUT(y0, t, nu, alpha, beta, cov0 = []):
     # add mean to get second moment
     mom2nd = cov0 + jnp.dot(y0.reshape((-1, 1)), y0.reshape((1, -1)))
 
-    # print(cov0, jnp.dot(y0.reshape((-1, 1)), y0.reshape((1, -1))), mom2nd)
-    # quit()
-
     y0 = jnp.hstack((y0, mom2nd.reshape((-1,))))
 
     @jit
@@ -32,9 +29,7 @@ def fpesolverUT(y0, t, nu, alpha, beta, cov0 = []):
         yMean = y[:dim]
         yMom2nd = y[dim:].reshape((dim, dim))
 
-        # Eric's
         yMom2nd = (-2 - 2*alpha)*yMom2nd + ((nu(t)*yMean).reshape((-1, 1)) + (nu(t)*yMean).reshape((1, -1))) + alpha/dim*(jnp.sum(yMom2nd, axis = 0).reshape((1, -1)) + jnp.sum(yMom2nd, axis = 0).reshape((-1, 1))) + 2./beta*jnp.eye(dim)
-
         yMean = -(1 + alpha)*yMean + nu(t) + alpha/dim*jnp.sum(yMean)
 
         return jnp.hstack((yMean, yMom2nd.reshape((-1,))))

@@ -79,8 +79,7 @@ def testpyNG(modeName, probName, unitName, schemeName, solverName, weightInit, s
         Ubenchmark = lambda x, i: prob.uT(x, jnp.asarray([tTimes[i]])).reshape((-1,))
         FDxGrid = prob.plotGrid
     else:
-        UbenchmarkArray, FDxGrid = computeFDSolution(probName, prob.Omega, deltat, prob.Tend, prob.nu, prob.u0, tIndx)
-        Ubenchmark = lambda x, i: UbenchmarkArray[:, i]
+        raise Exception('Not implemented')
 
     # filenames
     initFname = lambda zmode: 'initC/' + probName + '_' + unitName + '_ZI' + zmode + '-' + initSampleName + '-' + "{:.0e}".format(initBatchSize) + '-' + "{:.0e}".format(initNrIter) + '-' + "{:.0e}".format(initH) + '-' + "{:}".format(nrReplicates) + '_N' + "{:}".format(N) + "_nrL" + "{:}".format(nrLayers) + '.npz'

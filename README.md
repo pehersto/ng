@@ -8,7 +8,7 @@ The numerical examples can be run as follows:
 - Create a Python environment with
 
 ```
-$ bash setupenv.sh
+$ bash setuppy.sh
 $ source venv/bin/activate
 ```
 

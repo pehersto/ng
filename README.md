@@ -2,7 +2,7 @@
 
 This code implements the Neural Galerkin scheme with Active Learning for high-dimensional evolution equations as described in:
 
-* Bruna, Peherstorfer, Vanden-Eijnden [Neural Galerkin Scheme with Active Learning for High-Dimensional Evolution Equations](tbd).
+* Bruna, Peherstorfer, Vanden-Eijnden [Neural Galerkin Scheme with Active Learning for High-Dimensional Evolution Equations](https://doi.org/10.1016/j.jcp.2023.112588).
 
 The numerical examples can be run as follows:
 - Create a Python environment with
@@ -10,6 +10,7 @@ The numerical examples can be run as follows:
 ```
 $ bash setuppy.sh
 $ source venv/bin/activate
+$ mkdir results
 ```
 
 - The main file is `testpyNG.py`

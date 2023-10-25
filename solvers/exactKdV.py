@@ -1,6 +1,6 @@
 import jax
 import jax.numpy as jnp
-from jax.ops import index, index_add, index_update
+#from jax.ops import index, index_add, index_update
 
 def exactKdVTwoSol(x, t):
     '''

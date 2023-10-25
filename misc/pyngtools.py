@@ -16,7 +16,7 @@ def mvnpdfFull(X, meanAndCovList = None, unnormalize = False):
         return cons*jnp.exp(-0.5*inner)
 
 def mvnpdf(X, mean = None, covdiag = None):
-    cons = 1./jnp.sqrt((2*jnp.pi)**mean.size*jnp.product(covdiag))
+    cons = 1./jnp.sqrt((2*jnp.pi)**mean.size*jnp.prod(covdiag))
     inner = jnp.sum(jnp.multiply(X.T - mean.reshape((-1,1)), jnp.multiply((1./covdiag).reshape((-1,1)), X.T - mean.reshape((-1,1)))), axis = 0).reshape((-1,))
     return cons*jnp.exp(-0.5*inner)
 

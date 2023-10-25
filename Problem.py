@@ -5,7 +5,7 @@ from jax import random
 import numpy as np
 from scipy import special
 import scipy
-from jax.ops import index, index_add, index_update
+#from jax.ops import index, index_add, index_update
 from matplotlib import cm
 from functools import partial
 import math
@@ -227,7 +227,8 @@ def sampleGaussHelper(Omega, Nx, key, phi, alpha, Z, knots):
         meanU = jnp.mean(jnp.multiply(y, normalizingConstant))
         sigmaU = 2*jnp.sqrt(jnp.mean((y - meanU)**2*normalizingConstant)) # add a 2 for larger variance
         key, subkey = jax.random.split(key)
-        xSamples = index_update(xSamples, index[i*NStep:(i+1)*NStep], meanU + sigmaU*jax.random.normal(subkey, shape = (NStep,)))
+        xSamples = xSamples.at[index[i*NStep:(i+1)*NStep]].set(meanU + sigmaU*jax.random.normal(subkey, shape = (NStep,)))
+        #xSamples = index_update(xSamples, index[i*NStep:(i+1)*NStep], meanU + sigmaU*jax.random.normal(subkey, shape = (NStep,)))
 
     xSamples = xSamples[:Nx]
 
